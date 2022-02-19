@@ -1,0 +1,158 @@
+<div *ngIf="etd">
+    <div class="container" *ngIf="productFormGroup">
+        <form [formGroup]="productFormGroup">
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="id">
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" formControlName="username">
+          </div>
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="password">
+          </div>
+          <div class="form-group">
+            <label>Nom</label>
+            <input type="text" class="form-control" formControlName="nom"
+                   [ngClass]="{'is-invalid':submitted && productFormGroup.controls.nom.errors}">
+            <div class="invalid-feedback" *ngIf="submitted && productFormGroup.controls.nom.errors">
+              <div  *ngIf="submitted && productFormGroup.controls.nom.errors.required">Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Prenom</label>
+            <input type="text" class="form-control" formControlName="prenom">
+          </div>
+          <div class="form-group">
+            <label>Telephone</label>
+            <input type="text" class="form-control" formControlName="tel">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email">
+          </div>
+          <div class="form-group">
+            <label>Cin</label>
+            <input type="text" class="form-control" formControlName="cin">
+          </div>
+          
+          <div class="form-group">
+            <label>Date d'inscription</label>
+            <input type="date" class="form-control" formControlName="dateInscription">
+          </div>
+          <div class="form-group">
+            <label>Date de Naissance</label>
+            <input type="date" class="form-control" formControlName="dateNaissance">
+          </div>
+          <div class="form-group">
+            <label>Diplome</label>
+            <input type="text" class="form-control" formControlName="diplome">
+          </div>
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="type">
+          </div>
+          <div class="form-group">
+            
+         
+             <label for="pet-select">Choisir un encadrant:</label>
+
+            <select formControlName="encadrant">
+                
+                <option *ngFor="let enseignant of enseignants" value="{{enseignant.username}}"  >
+                  {{enseignant.grade}} {{enseignant.nom}} {{enseignant.nom}}</option>
+                
+            </select>
+        </div>
+        <div class="form-group">
+            
+          <input hidden type="text" class="form-control" formControlName="photo">
+        </div>
+        <div class="form-group">
+          
+          <input hidden type="text" class="form-control" formControlName="cv">
+        </div>
+          <button class="btn btn-success"  (click)="onUpdateEtudiant()">Save</button>
+        </form>
+      </div>      
+</div>
+<div *ngIf="ens">
+    <div class="container" *ngIf="productFormGroup">
+        <form [formGroup]="productFormGroup">
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="id">
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" formControlName="username">
+          </div>
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="password">
+          </div>
+          <div class="form-group">
+            <label>Nom</label>
+            <input type="text" class="form-control" formControlName="nom"
+                   [ngClass]="{'is-invalid':submitted && productFormGroup.controls.nom.errors}">
+            <div class="invalid-feedback" *ngIf="submitted && productFormGroup.controls.nom.errors">
+              <div  *ngIf="submitted && productFormGroup.controls.nom.errors.required">Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Prenom</label>
+            <input type="text" class="form-control" formControlName="prenom">
+          </div>
+          <div class="form-group">
+            <label>Telephone</label>
+            <input type="text" class="form-control" formControlName="tel">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email">
+          </div>
+          <div class="form-group">
+            <label>Cin</label>
+            <input type="text" class="form-control" formControlName="cin">
+          </div>
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="photo">
+          </div>
+          <div class="form-group">
+            <label>CV</label>
+            <input type="text" class="form-control" formControlName="cv">
+          </div>
+          <div class="form-group">
+            <label>Grade</label>
+            
+
+            <select formControlName="grade">
+                
+              <option value="Professeur">Professeur</option>
+              <option value="Docteur">Docteur</option>
+              <option value="M.assistant">M.assistant</option>
+              <option value="Ingénieur">Ingénieur</option>
+              
+          </select>
+          </div>
+          <div class="form-group">
+            <label>Date de Naissance</label>
+            <input type="date" class="form-control" formControlName="dateNaissance">
+          </div>
+          <div class="form-group">
+            <label>Etablissement</label>
+            <input type="text" class="form-control" formControlName="etablissement">
+          </div>
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="type">
+          </div>
+          
+          <button class="btn btn-success"  (click)="onUpdateEnseignant()">Save</button>
+        </form>
+      </div> 
+</div>
+  

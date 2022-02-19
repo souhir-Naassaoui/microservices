@@ -1,0 +1,270 @@
+<div *ngIf="etd">
+    <div class="container" *ngIf="productFormGroup">
+        <form [formGroup]="productFormGroup">
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="id">
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" formControlName="username">
+          </div>
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="password">
+          </div>
+          <div class="form-group">
+            <label>Nom</label>
+            <input type="text" class="form-control" formControlName="nom"
+                   [ngClass]="{'is-invalid':submitted && productFormGroup.controls.nom.errors}">
+            <div class="invalid-feedback" *ngIf="submitted && productFormGroup.controls.nom.errors">
+              <div  *ngIf="submitted && productFormGroup.controls.nom.errors.required">Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Prenom</label>
+            <input type="text" class="form-control" formControlName="prenom">
+          </div>
+          <div class="form-group">
+            <label>Telephone</label>
+            <input type="text" class="form-control" formControlName="tel">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email">
+          </div>
+          <div class="form-group">
+            <label>Cin</label>
+            <input type="text" class="form-control" formControlName="cin">
+          </div>
+          <div class="form-group">
+            <label>Photo</label>
+            <input type="text" class="form-control" formControlName="photo">
+          </div>
+          <div class="form-group">
+            <label>CV</label>
+            <input type="text" class="form-control" formControlName="cv">
+          </div>
+          <div class="form-group">
+            <label>Date d'inscription</label>
+            <input type="date" class="form-control" formControlName="dateInscription">
+          </div>
+          <div class="form-group">
+            <label>Date de Naissance</label>
+            <input type="date" class="form-control" formControlName="dateNaissance">
+          </div>
+          <div class="form-group">
+            <label>Diplome</label>
+            <input type="text" class="form-control" formControlName="diplome">
+          </div>
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="type">
+          </div>
+          <button class="btn btn-success"  (click)="onUpdateEtudiant()">Save</button>
+        </form>
+      </div>      
+</div>
+<div *ngIf="ens">
+    <div class="container" *ngIf="productFormGroup">
+        <form [formGroup]="productFormGroup">
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="id">
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" formControlName="username">
+          </div>
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="password">
+          </div>
+          <div class="form-group">
+            <label>Nom</label>
+            <input type="text" class="form-control" formControlName="nom"
+                   [ngClass]="{'is-invalid':submitted && productFormGroup.controls.nom.errors}">
+            <div class="invalid-feedback" *ngIf="submitted && productFormGroup.controls.nom.errors">
+              <div  *ngIf="submitted && productFormGroup.controls.nom.errors.required">Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Prenom</label>
+            <input type="text" class="form-control" formControlName="prenom">
+          </div>
+          <div class="form-group">
+            <label>Telephone</label>
+            <input type="text" class="form-control" formControlName="tel">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email">
+          </div>
+          <div class="form-group">
+            <label>Cin</label>
+            <input type="text" class="form-control" formControlName="cin">
+          </div>
+          <div class="form-group">
+            <label>Photo</label>
+            <input type="text" class="form-control" formControlName="photo">
+
+            <!-- 
+              <p>
+              <button (click)="onEditPhoto(currentUser)">
+                  <span class="glyphicon glyphicon-edit"></span>
+              </button>
+          </p>
+          <p *ngIf="editPhoto && currentUser==currentUser">
+              <input type="file" (change)="onSelectedFile($event)">
+              <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
+              {{progress}}
+          </p>
+            -->
+
+          </div>
+          <div class="form-group">
+            <label>CV</label>
+            <input type="text" class="form-control" formControlName="cv">
+          </div>
+          <div class="form-group">
+            <label>Grade</label>
+            <input type="text" class="form-control" formControlName="grade">
+          </div>
+          <div class="form-group">
+            <label>Date de Naissance</label>
+            <input type="date" class="form-control" formControlName="dateNaissance">
+          </div>
+          <div class="form-group">
+            <label>Etablissement</label>
+            <input type="text" class="form-control" formControlName="etablissement">
+          </div>
+          <div class="form-group">
+            
+            <input hidden type="text" class="form-control" formControlName="type">
+          </div>
+          
+          <button class="btn btn-success"  (click)="onUpdateEnseignant()">Save</button>
+        </form>
+      </div> 
+</div>
+  
+//////////////////////////////////////////////////////////////////////////
+import { Etudiant } from './../model/Etudiant.model';
+import { Router } from '@angular/router';
+import { MembresService } from './../membres.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AppComponent } from './../app.component';
+import { Component, OnInit } from '@angular/core';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+
+@Component({
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
+})
+export class EditUserComponent implements OnInit {
+
+  submitted:boolean=false;
+  productFormGroup!:FormGroup;
+
+  public editPhoto:boolean=false;
+
+  public selectedFile:any;
+  public progress:number=0;
+  public currentUploadedFiles:any;
+
+  currentUser?:any;
+  type!:any;
+  etd=false;
+  ens=false;
+  constructor(public app:AppComponent,private fb:FormBuilder,private memberService:MembresService,
+    private router:Router) {
+    this.currentUser=this.app.currentUser;
+   
+   }
+
+
+
+  ngOnInit(): void {
+      this.type=this.currentUser.type;
+      if(this.type=="ens"){
+        this.ens=true;
+        this.getEnseignant();
+      }else{
+        this.etd=true;
+        this.getEtudiant();
+      }
+    
+  }
+  getEtudiant(){
+    this.productFormGroup=this.fb.group({
+      id:[this.currentUser.id,Validators.required],
+      username:[this.currentUser.username,Validators.required],
+      password:[this.currentUser.password,Validators.required],
+      nom:[this.currentUser.nom,Validators.required],
+      prenom:[this.currentUser.prenom,Validators.required],
+      photo:[this.currentUser.photo,Validators.required],
+      tel:[this.currentUser.tel,Validators.required],
+      cin:[this.currentUser.cin,Validators.required],
+      cv:[this.currentUser.cv,Validators.required],
+      dateInscription:[this.currentUser.dateInscription,Validators.required],
+      dateNaissance:[this.currentUser.dateNaissance,Validators.required],
+      diplome:[this.currentUser.diplome,Validators.required],
+      email:[this.currentUser.email,Validators.required],
+      type:[this.currentUser.type,Validators.required]
+    });
+  }
+  getEnseignant(){
+    this.productFormGroup=this.fb.group({
+      id:[this.currentUser.id,Validators.required],
+      username:[this.currentUser.username,Validators.required],
+      password:[this.currentUser.password,Validators.required],
+      nom:[this.currentUser.nom,Validators.required],
+      prenom:[this.currentUser.prenom,Validators.required],
+      photo:[this.currentUser.photo,Validators.required],
+      tel:[this.currentUser.tel,Validators.required],
+      cin:[this.currentUser.cin,Validators.required],
+      cv:[this.currentUser.cv,Validators.required],
+      grade:[this.currentUser.grade,Validators.required],
+      dateNaissance:[this.currentUser.dateNaissance,Validators.required],
+      etablissement:[this.currentUser.etablissement,Validators.required],
+      email:[this.currentUser.email,Validators.required],
+      type:[this.currentUser.type,Validators.required]
+    });
+  }
+  onUpdateEtudiant() {
+    this.memberService.updateEtudiant(this.productFormGroup.value).subscribe(data=>{
+        alert("Successfully updated");
+        this.router.navigateByUrl('/');
+    });
+  }
+  onUpdateEnseignant() {
+    this.memberService.updateEnseignant(this.productFormGroup.value).subscribe(data=>{
+        alert("Successfully updated");
+        this.router.navigateByUrl('/');
+    });
+  }
+
+  onEditPhoto(p:any){
+    this.editPhoto=true;
+    this.currentUser=p;
+  }
+  onSelectedFile(event:any){
+    this.selectedFile=event.target.files;
+  }
+  uploadPhoto(){
+    this.progress=0;
+    this.currentUploadedFiles=this.selectedFile.item(0);
+    this.memberService.uploadPhotoProduct(this.currentUploadedFiles,this.currentUser.id).subscribe(event=>{
+      if(event.type===HttpEventType.UploadProgress){
+        this.progress=Math.round(100*event.loaded/event.total!);
+      }else if(event instanceof HttpResponse){
+        this.router.navigateByUrl('/');
+      }
+    },err=>{
+      alert("Probleme de chargement "+JSON.parse(err.error).message);
+    });
+    this.selectedFile=undefined;
+  }
+
+}

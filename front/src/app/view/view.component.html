@@ -1,0 +1,78 @@
+<h2 class="text-info">{{member.grade}} {{member.nom}} {{member.prenom}}</h2>
+<img style="border-radius: 50%;" src="{{urlPhoto}}"  width="300" height="300">
+
+<h4>Etudiants encadrés :</h4>
+<table class="table table-striped" *ngIf="etudiants">
+    <tr>
+      <th>Nom</th><th>Prenom</th><th>Email</th><th>Photo</th><th>CV</th><th>Telephone</th>
+    </tr>
+    <tr *ngFor="let member of etudiants">
+        <td>{{member.nom}}</td>
+        <td>{{member.prenom}}</td>
+        <td>{{member.email}}</td>
+        <td>
+          <img height="50" style="border-radius: 50%;" src="{{urlPhotoEtudiants+member.id}}">
+       
+      </td>
+        <td>{{member.cv}}</td>
+        <td>{{member.tel}}</td>
+    </tr>
+
+  </table>
+
+ <div *ngIf="isMe()"> 
+    <h3 class="text-warning">Ajouter/mettre à jour votre cv</h3>
+  <div class="row">
+    <div class="col-8">
+        <label class="btn btn-default p-0">
+            <input type="file" (change)="selectFile($event)"/>
+        </label>
+    </div>
+<br>
+    <div class="col-4">
+        <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
+            Ajouter/mettre à jour votre cv
+        </button>
+    </div>
+</div>
+
+<div *ngIf="message" class="alert alert-success" role="alert">{{ message }}</div>
+<div *ngIf="errorMsg" class="alert alert-danger" role="alert">{{ errorMsg }}</div>
+ </div>
+<br><br>
+
+ <div *ngIf="isMe()"> 
+     <h3 class="text-warning">Ajouter une publication</h3>
+    <div class="row">
+        <label >Ajouter un titre : </label>
+        <input type="text" [(ngModel)]="title" /> <br>
+      <div class="col-8"><label >Importer la publication : </label>
+          <label class="btn btn-default p-0">
+            
+              <input type="file" (change)="selectFile($event)"/>
+          </label>
+      </div>
+  
+      <div class="col-4">
+          <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="uploadPublication()">
+            Ajouter une publication
+          </button>
+      </div>
+  </div>
+  
+  <div *ngIf="message" class="alert alert-success" role="alert">{{ message }}</div>
+  <div *ngIf="errorMsg" class="alert alert-danger" role="alert">{{ errorMsg }}</div>
+   </div>
+
+   <h4>Publications :</h4>
+<table class="table table-striped" *ngIf="publications">
+    <tr>
+      <th>Titre</th>
+    </tr>
+    <tr *ngFor="let p of publications">
+        <td>{{p.title}}
+            <a href="{{urlpub+p.sourcePdf}}" download="newfilename"><span class="fa fa-file-pdf-o fa-2x"></span></a></td>
+        
+    </tr>
+
+  </table>

@@ -1,0 +1,31 @@
+
+
+<div class="row">
+    <div class="col-md-2">
+        <!-- 
+            <ul class="list-group" *ngIf="categories">
+            <li 
+             *ngFor="let c of publications"style="cursor: pointer;" class="list-group-item">
+             {{c.name}}
+            </li>
+        </ul>
+        -->
+      </div>
+      <div class="col-md-9">
+
+        <table class="table table-striped"  *ngIf="publications">
+            <tr>
+                <th>Titre</th><th>Source</th>
+            </tr>
+            <tr *ngFor="let p of publications">
+                
+                <td>{{p.title}}</td>
+                <td><a href="{{urlpub+p.auteurId+name+p.sourcePdf}}" download="newfilename"><span class="fa fa-file-pdf-o fa-2x"></span></a></td>
+                <td><button (click)="onConsultPub(p.id)"  class="btn btn-sm btn-danger">
+                    <span class="fa fa-eye "></span>
+                    </button></td>
+            </tr>
+        </table>
+      </div>
+
+</div>

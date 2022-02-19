@@ -1,0 +1,22 @@
+<div class="container" *ngIf="eventFormGroup">
+    
+    <form [formGroup]="eventFormGroup">
+        <div class="form-group">
+            <label>Nom de l'événement</label>
+            <input type="text" [ngClass]="{'is-invalid':submitted && eventFormGroup.controls.title.errors}" name="title" class="form-control" formControlName="title">
+            <div *ngIf="submitted && eventFormGroup.controls.title.errors" class="invalid-feedback">
+                <div *ngIf="eventFormGroup.controls.title.errors.required">Name is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date" name="date" class="form-control" formControlName="date">
+        </div>
+        <div class="form-group">
+            <label>Lieux</label>
+            <input type="text" name="lieux" class="form-control" formControlName="lieux">
+        </div>
+        
+        <button class="btn btn-success" (click)="onSaveEvent()">Save</button>
+    </form>
+</div>

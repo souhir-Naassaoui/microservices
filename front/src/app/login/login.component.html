@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8"/>
+    <style>
+        .spacer{
+    margin-top:60px;
+}
+.vertical-menu {
+    width: 200px;
+}
+
+.vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+}
+
+.vertical-menu a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+* {
+    margin : 0px;
+    padding : 0px;
+}
+
+#wrapper {
+
+    width : 990px;
+    margin : 0 auto;
+}
+
+header {
+    height : 74px;
+    border : 1px solid white;
+    margin-top : 7px;
+    position : relative;
+    background-image:linear-gradient(white,white);
+    border-radius : 10px 10px 0 0;
+}
+
+header h1 {
+    margin: 5px 0 20px 10px;
+    font-family : trebuchet;
+    font-size : 40px;
+    color : green;
+}
+
+.titre_panier {
+    font-family : trebuchet;
+    font-size : 25px;
+    color : orange;
+    margin: 10px 0 10px 10px ;
+}
+
+.erreur {
+    font-family : Arial;
+    font-size : 15px;
+    color : red;
+    margin-left : 15px;
+    margin-bottom : 10px;
+}
+
+.lettrage {
+    font-family : trebuchet;
+    font-size : 50px;
+    color : orange;
+}
+
+.lien_retour{
+    margin : 2px 0 20px 100px;
+    font-family : Arial;
+    font-size : 18px;
+}
+
+.lien_retour a {
+    text-decoration : none;
+    color : green;
+    font-weight : bold;
+}
+
+.lien_retour a:hover {
+    color: orange;
+}
+
+
+aside {
+    position : absolute;
+    top : 10px;
+    right : 10px;
+}
+
+nav ul {
+    height : 30px;
+    padding-left : 20px;
+    background-color : black;
+}
+
+nav li{
+    float : left;
+    list-style-type : none;
+    margin-right : 30px;
+    line-height : 30px;
+}
+
+nav ul li a{
+    text-decoration : none;
+    font-family : Arial;
+    font-weight : bold;
+    font-size : 15px;
+    color : white;
+}
+
+nav ul li:hover a, footer span:hover a {
+    color : orange;
+}
+
+section {
+    border-left : 1px dotted black;
+    border-right : 1px dotted black;
+    background-color : white;
+    border-radius : 20px;
+    margin-bottom : 10px;
+    min-height : 500px;
+    padding: 20px 0 20px 0;
+}
+
+.article {
+    width : 700px;
+    height : 60px;
+    margin: 20px auto;
+    border : 1px solid black;
+    background-image:linear-gradient(60deg, white, #daf2e2);
+}
+
+.article h2, .article p.prix, .article form {
+    float : left;
+    line-height : 60px;
+}
+
+.article h2{
+    margin-left : 30px;
+    font-family : serif;
+    font-size : 25px;
+    font-weight : bold;
+    color : green;
+}
+
+.article p.prix{
+    width: 40px;
+    height: 62px;
+    margin-left : 80px;
+    font-family : serif;
+    font-size : 20px;
+    font-weight : bold;
+    color : black;
+}
+
+.article p.reappro{
+    width : 150px;
+    margin-left : 510px;
+    margin-top : 10px;
+    font-family : serif;
+    font-size : 16px;
+    font-weight : bold;
+    color : red;
+    text-align : center;
+}
+
+.article form p input {
+    margin-left : 250px;
+    width : 150px;
+    height : 30px;
+    font-family : Arial;
+    font-size : 15px;
+    font-weight : bold;
+    color : black;
+    background-image:linear-gradient(60deg, white, #7b857f);
+    border : 1px solid black;
+    cursor : pointer;
+}
+
+.article form p input:hover, #valider_panier:hover {
+    color : green;
+    background-image:linear-gradient(60deg, #7b857f, white);
+
+}
+
+.clear {
+    clear : both;
+}
+
+table {
+    width : 800px;
+    margin : 0 auto;
+    text-align : center;
+    border-collapse : collapse;
+    font-family : Arial;
+    font-size : 15px;
+}
+
+td, th {
+    border : 1px solid black;
+    height : 30px;
+}
+
+.no_border {
+    border : none;
+}
+
+.table_bold {
+    font-weight : bold;
+    text-align : right;
+    padding-right : 5px;
+    border-top : 3px solid black;
+}
+
+.bold{
+    font-weight : bold;
+    border-top : 3px solid black;
+}
+
+.table_small {
+    font-weight : bold;
+    text-align : right;
+    padding-right : 5px;
+    font-size : 11px;
+}
+
+.small {
+    font-size : 12px;
+}
+
+.choix_quantite{
+    font-weight : bold;
+    font-family : Arial;
+    font-size : 15px;
+    text-decoration : none;
+    color : green;
+    line-height : 30px;
+    margin : 0 10px 0 10px;
+    vertical-align : middle;
+}
+
+.choix_quantite:hover, .supprimer_article:hover {
+    color: black;
+}
+
+.supprimer_article{
+    font-weight : bold;
+    font-family : Arial;
+    font-size : 15px;
+    text-decoration : none;
+    color : red;
+    line-height : 30px;
+}
+
+#valider_panier{
+    margin-left : 750px;
+    margin-top : 50px;
+    width : 150px;
+    height : 30px;
+    font-family : Arial;
+    font-size : 15px;
+    font-weight : bold;
+    color : black;
+    background-image:linear-gradient(60deg, white, #7b857f);
+    border : 1px solid black;
+    cursor : pointer;
+}
+
+footer,  footer span a  {
+    height : 30px;
+    line-height : 30px;
+    border-top : 1px solid black;
+    text-align : center;
+    background : black;
+    font-family : Arial;
+    font-size : 15px;
+    color : white;
+}
+</style>
+</head>
+<body style="background-color: #eadede">
+
+
+<div class="container">
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-4 col-md-offset-1">
+            <img src="assets/log.png" alt="" height="500px" width="380px" style="border-top-left-radius: 30px 50%">
+        </div>
+        <div class="col-md-6" style="background-color: whitesmoke;height: 500px;border-top-right-radius: 30px 50%">
+                    <h2>  ENIS Lab</h2>
+                    <h3>Se connecter </h3>
+                    <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
+                        <div class="form-group">
+                            <label class="control-label">Username</label>
+                            <input type="text" name="username" ngModel class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Password</label>
+                            <input type="password" name="password" ngModel class="form-control">
+                        </div>
+                        
+                        <button class="btn btn-default">Submit</button>
+                        <a class="nav-link btn btn-warning"  routerLink="/register">Register</a>
+                    </form>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

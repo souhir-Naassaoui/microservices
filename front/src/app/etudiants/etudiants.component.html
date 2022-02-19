@@ -1,0 +1,40 @@
+<table class="table table-striped" *ngIf="members">
+    <tr>
+      <th>Nom</th><th>Prenom</th><th>Email</th><th>Photo</th><th>CV</th><th>Telephone</th>
+    </tr>
+    <tr *ngFor="let member of members">
+        <td>{{member.nom}}</td>
+        <td>{{member.prenom}}</td>
+        <td>{{member.email}}</td>
+        <td>
+          <img height="50" style="border-radius: 50%;" src="{{url+member.id}}">
+          <!-- 
+            <p>
+              <button (click)="onEditPhoto(p)">
+                  <span class="glyphicon glyphicon-edit"></span>
+              </button>
+          </p>
+          <p *ngIf="editPhoto && currentProduct==p">
+              <input type="file" (change)="onSelectedFile($event)">
+              <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
+              {{progress}}
+          </p>
+          -->
+      </td>
+      <td>
+        <a href="{{urlCV+member.id}}" download="newfilename"><span class="fa fa-file-pdf-o fa-2x"></span></a></td>
+        <td>{{member.tel}}</td>
+
+        
+        <td *ngIf="isAuthenticated() && isAdmin()"><button (click)="onEdit(member)" class="btn btn-sm btn-danger">
+        <span class="fa fa-edit"></span>
+        </button></td>
+        <td *ngIf="isAuthenticated() && isAdmin()"><button (click)="onDelete(member.id)"  class="btn btn-sm btn-danger">
+            <span class="fa fa-trash"></span>
+            </button></td>
+            <td *ngIf="isAuthenticated()"><button (click)="onConsultEtudiant(member.id)"  class="btn btn-sm btn-danger">
+              <span class="fa fa-eye"></span>
+              </button></td>
+    </tr>
+
+  </table>
